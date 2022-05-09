@@ -45,9 +45,9 @@ async function run() {
             const filter = {_id: ObjectId(id)};
             const options = { upsert: true };
             const updatedDoc = {
-                $inc: {
-                    quantity: -1,
-                    sold: 1
+                $set: {
+                    quantity: updatedItem.quantity,
+                    sold: updatedItem.sold
                 }
             };
             const result = await itemCollection.updateOne(filter, updatedDoc, options);
